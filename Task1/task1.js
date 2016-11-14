@@ -7,7 +7,6 @@
  forEach, filter, map, slice, reduce, splice  пример:
 
 
-
  let array = [1, 2, 3, 4, 5, 6];
 
  forEach(array, item => console.log(item));

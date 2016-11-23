@@ -46,30 +46,30 @@
         newDiv.style.background = getRandomColor();
     }
 
-
     button.addEventListener("click", function () {
         createDiv();
     });
 
     document.body.addEventListener("mousedown", function (e) {
-        newDiv = document.querySelector(".newDiv");
+        var newDiv = e.target;
 
-        if (e.target.classList.contains("newDiv")) {
-            moveAt(e);
+        function mouseMoving(e) {
+            if (newDiv.classList.contains("newDiv")) {
+                moveAt(e, newDiv);
+            }
         }
 
-        this.addEventListener("mousemove", moveAt);
+        newDiv.addEventListener("mousemove", mouseMoving);
 
-        this.addEventListener("mouseup", function (ev) {
-            this.removeEventListener("mousemove", moveAt);
-            this.removeEventListener("mousedown", this);
+        newDiv.addEventListener("mouseup", function () {
+            newDiv.removeEventListener("mousemove", mouseMoving);
+            newDiv.removeEventListener("mousedown", this);
         });
-
     });
 
-    function moveAt(ev) {
-        ev.target.style.left = ev.pageX - ev.target.offsetWidth / 2 + "px";
-        ev.target.style.top = ev.pageY - ev.target.offsetWidth / 2 + "px";
+    function moveAt(e, el) {
+        el.style.left = e.pageX - el.offsetWidth / 2 + "px";
+        el.style.top = e.pageY - el.offsetWidth / 2 + "px";
     }
 
 })();

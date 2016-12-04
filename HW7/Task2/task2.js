@@ -68,7 +68,7 @@
         var futureDays = new Date().getTime() + durationDays * 24 * 60 * 60 * 1000;
         cookies[itemName] = itemValue;
 
-        document.cookie = itemName + "=" + itemValue + "; " + "expires=" + new Date(futureDays);
+        document.cookie = itemName + "=" + itemValue + "; " + "expires=" + new Date(futureDays).toUTCString();
         var rowSize = document.querySelectorAll(lastRowElement).length;
         currentRow = cookieTable.insertRow(rowSize);
 

@@ -44,9 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 index = 0;
                 filteredArr = [];
                 for (var i = 0; i < incomeArr.length; i++) {
-                    if (incomeArr[i].name.indexOf(inputField.value) !== -1) {
-                        //console.log(i);
-                        //console.log(cityList.hasChildNodes(incomeArr[0])  );
+                    if (incomeArr[i].name.toLowerCase().indexOf(inputField.value.toLowerCase()) !== -1) {
                         filteredArr[index] = incomeArr[i];
                         index++;
                         continue;

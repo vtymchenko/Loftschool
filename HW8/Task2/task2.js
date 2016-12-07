@@ -36,35 +36,70 @@ new Promise(function(resolve) {
                 reject(new Error(response.error.error_msg));
             } else {
 
-                var  userData =  response.response;
-                for (var item of userData ) {
-                    if( item.bdate === undefined){
-                        item.birthDate  = "2,1,1900" ;
-                    } else {
-                        var  accountBDate = item.bdate.split(".");
-                        if( accountBDate[2] === undefined ) {
-                            accountBDate[2] = new Date().getFullYear()-150;
-                            item.birthDate =  (accountBDate[1]) +"."+ accountBDate[0] +"." + accountBDate[2];
-                        }else{
-                            item.birthDate =  (accountBDate[1]) +"."+ accountBDate[0] +"." + accountBDate[2];
-                            item.age = new Date().getFullYear()  - accountBDate[2];
-                            if(  new Date().getMonth()+1  <= accountBDate[1] && new Date().getDate() < accountBDate[0] ) {
-                                item.age -=1 ;
-                            }
-                        }
+            var  userData =  response.response;
+
+             for (var item of userData ) {
+                if( item.hasOwnProperty("bdate") ){
+                   var  accountBDate = item.bdate.split(".");
+                    if (accountBDate[2]){
+                       item.age = new Date().getFullYear()  - accountBDate[2];
+                          if( new Date().getMonth()+1  <= accountBDate[1] && new Date().getDate() < accountBDate[0] ) {
+                             item.age -=1 ;
+                          }
                     }
                 }
+             }
 
-                userData.sort(function (accountObjA, accountObjB) {
-                    return  new Date( accountObjB.birthDate).getTime() -  new Date(accountObjA.birthDate).getTime() ;
-                });
+                var withoutBdate=[] ;
+                var withDateArr=[] ;
 
-                var source = vkFriendsTemplate.innerHTML;
-                var templateFn = Handlebars.compile(source);
-                var template  = templateFn({userData: userData });
-                results.innerHTML = template;
+             for (var account of userData) {
+                if (account.hasOwnProperty("bdate")) {
+                   withDateArr.push(account);
+                } else {
+                    withoutBdate.push(account);
+                }
+             }
 
-                resolve();
+             var bdateHasPassed = [];
+             var bdateIsComing = [];
+             var today = new Date();
+
+             for (var i=0 ; i< withDateArr.length; i++){
+
+                var bdateA  = withDateArr[i].bdate.split(".");
+                var bdate = new Date(2016, bdateA[1]-1,bdateA[0]);
+                   if(today.getTime() > bdate.getTime()) {
+                      bdateHasPassed.push(withDateArr[i]);
+                   } else {
+                        bdateIsComing.push(withDateArr[i]);
+                   }
+             }
+
+             var sortFunc = function (objA,objB) {
+                 var currentBDateA = objA.bdate.split(".") ;
+                 var currentBDateB = objB.bdate.split(".") ;
+                    if (currentBDateA[1]-1 > currentBDateB[1]-1){
+                       return 1;
+                    }
+
+                    if (currentBDateA[1]-1  === currentBDateB[1]-1){
+                       return 0;
+                    }
+                 return -1;
+              }
+
+             bdateHasPassed.sort(sortFunc) ;
+             bdateIsComing.sort(sortFunc);
+
+             var parsedResult =  bdateIsComing.concat(bdateHasPassed,withoutBdate);
+
+             var source = vkFriendsTemplate.innerHTML;
+             var templateFn = Handlebars.compile(source);
+             var template  = templateFn({parsedArr: parsedResult });
+             results.innerHTML = template;
+
+             resolve();
             }
         })
     });

@@ -77,17 +77,19 @@ new Promise(function(resolve) {
              }
 
              var sortFunc = function (objA,objB) {
-                 var currentBDateA = objA.bdate.split(".") ;
-                 var currentBDateB = objB.bdate.split(".") ;
-                    if (currentBDateA[1]-1 > currentBDateB[1]-1){
-                       return 1;
-                    }
+                var currentBDateA = objA.bdate.split(".") ;
+                var currentBDateB = objB.bdate.split(".") ;
+                   if (new Date(2016, currentBDateA[1]-1,currentBDateA[0]).getTime()>
+                        new Date(2016, currentBDateB[1]-1,currentBDateB[0]).getTime()){
+                           return 1;
+                   }
 
-                    if (currentBDateA[1]-1  === currentBDateB[1]-1){
-                       return 0;
-                    }
-                 return -1;
-              }
+                   if (new Date(2016, currentBDateA[1]-1,currentBDateA[0]).getTime() ===
+                        new Date(2016, currentBDateB[1]-1,currentBDateB[0]).getTime()){
+                           return 0;
+                   }
+                    return -1;
+             }
 
              bdateHasPassed.sort(sortFunc) ;
              bdateIsComing.sort(sortFunc);

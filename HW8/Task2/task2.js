@@ -37,6 +37,8 @@ new Promise(function(resolve) {
             } else {
 
             var  userData =  response.response;
+            var withoutBdate=[] ;
+            var withDateArr=[] ;
 
              for (var item of userData ) {
                 if( item.hasOwnProperty("bdate") ){
@@ -47,18 +49,9 @@ new Promise(function(resolve) {
                              item.age -=1 ;
                           }
                     }
+                    withDateArr.push(item);
                 }
-             }
-
-                var withoutBdate=[] ;
-                var withDateArr=[] ;
-
-             for (var account of userData) {
-                if (account.hasOwnProperty("bdate")) {
-                   withDateArr.push(account);
-                } else {
-                    withoutBdate.push(account);
-                }
+                    withoutBdate.push(item);
              }
 
              var bdateHasPassed = [];
@@ -68,7 +61,14 @@ new Promise(function(resolve) {
              for (var i=0 ; i< withDateArr.length; i++){
 
                 var bdateA  = withDateArr[i].bdate.split(".");
-                var bdate = new Date(2016, bdateA[1]-1,bdateA[0]);
+                     if (bdateA[1]  > 0 && bdateA[1] <= 9) {
+                         if (bdateA[2]) {
+                             withDateArr[i].bdate = bdateA[0] + "." + "0" + ( bdateA[1]) + "." + bdateA[2];
+                          } else {
+                             withDateArr[i].bdate = bdateA[0] + "." + "0" +  (bdateA[1]);
+                          }
+                     }
+                  var bdate = new Date(2016, bdateA[1]-1,bdateA[0]);
                    if(today.getTime() > bdate.getTime()) {
                       bdateHasPassed.push(withDateArr[i]);
                    } else {
@@ -76,7 +76,7 @@ new Promise(function(resolve) {
                    }
              }
 
-             var sortFunc = function (objA,objB) {
+                var sortFunc = function (objA,objB) {
                 var currentBDateA = objA.bdate.split(".") ;
                 var currentBDateB = objB.bdate.split(".") ;
                    if (new Date(2016, currentBDateA[1]-1,currentBDateA[0]).getTime()>
@@ -93,12 +93,11 @@ new Promise(function(resolve) {
 
              bdateHasPassed.sort(sortFunc) ;
              bdateIsComing.sort(sortFunc);
-
              var parsedResult =  bdateIsComing.concat(bdateHasPassed,withoutBdate);
 
              var source = vkFriendsTemplate.innerHTML;
              var templateFn = Handlebars.compile(source);
-             var template  = templateFn({parsedArr: parsedResult });
+             var template  = templateFn({parsedResult: parsedResult });
              results.innerHTML = template;
 
              resolve();

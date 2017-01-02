@@ -1,0 +1,207 @@
+    .body {
+        background-color: #999999;
+        /*font-family: "Times New Roman", Times, serif;*/
+        /*font-family: Arial, Helvetica, sans-serif;*/
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+    #form {
+        background-color: #FFFFFF;
+        width: 620px;
+        height: 490px;
+        margin: 0 auto;
+        border-radius: 10px;
+     }
+
+    #header-line {
+        background-color: #ff8663;
+        height: 45px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    #text-header {
+        color: #FFFFFF;
+        vertical-align: middle;
+        font-weight: bold;
+        position: absolute;
+        line-height: 45px;
+        font-size: 20px;
+        padding-left: 15px;
+    }
+
+    .close-sign {
+        position: relative;
+        vertical-align: middle;
+        float: right;
+        display: block;
+        padding-right: 15px;
+        padding-top: 15px;
+    }
+
+    .search-block{
+        background-color: #f0f0f0;
+        height: 45px;
+        display:  block;
+        position: relative;
+     }
+
+    .allSearch{
+        background: #ffffff;
+        width: 271px;
+        height: 28px;
+        margin-top: 8px;
+        margin-left: 15px;
+        vertical-align: middle;
+        position: relative;
+        line-height: 45px;
+         border-radius: 15px;
+        float: left;
+        border:none;
+        outline: none;
+        padding-left: 30px;
+        color: #c8c8c8;
+    }
+
+    .wrapper1 .lupa {
+        position: absolute;
+        content: url("lupa.png");
+        left: 23px;
+        top: 14px;
+    }
+
+    .wrapper2 .lupa {
+        position: absolute;
+        content: url("lupa.png");
+        left: 343px;
+        top: 14px;
+    }
+
+    .filteredSearch{
+        background: #ffffff;
+        width: 271px;
+        height: 28px;
+        margin-top: 8px;
+        margin-right: 15px;
+        vertical-align: middle;
+        position: relative;
+        float: right;
+        border-radius: 15px;
+        border:none;
+        outline: none;
+        padding-left: 30px;
+        color: #c8c8c8;
+    }
+
+
+    .all-friends-paragraph{
+        color: #4e4f4f;
+        height: 30px;
+        width: 310px;
+        position: relative;
+        padding-left:15px;
+        padding-top: 10px;
+        font-weight: bold;
+        display:  inline-block;
+    }
+
+    .filter-friends-paragraph{
+        color: #4e4f4f;
+        height: 30px;
+        display:  inline-block;
+        position: relative;
+        padding-right:15px;
+        padding-top: 10px;
+        font-weight: bold;
+    }
+
+
+    #allFriendsContainer{
+        width: 310px;
+        height: 322px;
+        float: left;
+        position: relative;
+        display:  inline-block;
+        font-weight: bold;
+        font-size: 12px;
+        overflow: auto;
+    }
+
+    #filteredFriendsContainer{
+        width: 310px;
+        height: 322px;
+        float: right;
+        position: relative;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 12px;
+        overflow: auto;
+    }
+
+    #allFriendsContainer li {
+        margin-left: 5px;
+        border-left: none;
+        border-top: none;
+    }
+
+    #filteredFriendsContainer li {
+        margin-left: 5px;
+        border-left: none;
+        border-top: none;
+    }
+
+     .add-favorite-pic::after {
+        display: inline-block;
+        content: url("add_sign.png");
+        float:right;
+        vertical-align: middle;
+        position: relative;
+        line-height:50px;
+        padding-right: 10px;
+    }
+
+    #allFriendsContainer li:hover{
+        background:  #f0f0f0;
+    }
+
+    #filteredFriendsContainer li:hover {
+        background:  #f0f0f0;
+
+    }
+
+    #filteredFriendsContainer .add-favorite-pic::after{
+        display: inline-block;
+        content: url("remove_sign.png");
+        float:right;
+        vertical-align: middle;
+        position: relative;
+        line-height:50px;
+        padding-right: 10px;
+    }
+
+    .footer{
+        height: 48px;
+        display: block;
+        background-color: #f0f0f0;
+        position: relative;
+        clear: both;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    #save{
+        color: #f0f0f0;
+        background: #FE8663;
+        border-radius: 10px;
+        border: none;
+        padding: 8px 12px;
+        text-align: center;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        font-size: 12px;
+        float:right;
+        margin-right: 8px;
+        margin-top: 8px;
+        outline: none;
+    }

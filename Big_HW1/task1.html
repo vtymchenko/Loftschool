@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <title>VK filter friends</title>
+</head>
+<body class="body">
+    <div id="container">
+        <div id="form">
+         <div id="header-line">
+             <span id="text-header">Выберите друзей</span>
+             <img class="close-sign" src="Rounded Rectangle.png" ></img>
+         </div>
+            <div class="search-block">
+                <div class="wrapper1">
+                    <input class="allSearch" placeholder="Начните вводить имя друга" />
+                    <span class="lupa"></span>
+                </div>
+                <div class="wrapper2">
+                    <input class="filteredSearch" placeholder="Друзья в cписке" />
+                    <span class="lupa"></span>
+                </div>
+
+            </div>
+            <div class="description-container">
+                <p class="all-friends-paragraph">Ваши друзья</p>
+                <p class="filter-friends-paragraph">Друзья в списке</p>
+            </div>
+            <div class="list-container">
+                <div id="allFriendsContainer" ondragstart="drag(event)">
+                 </div>
+
+                <div id="filteredFriendsContainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+                </div>
+            </div>
+            <div class="footer">
+                <button id="save" type="button">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/x-handlebars-template" id="vkFriendsTemplate">
+            {{#each list}}
+            <li id="{{uid}}"  class="list-group-item" draggable="true">
+                <div class="row">
+                    <img id="photo-account" class="card-img-left img-circle" src="{{photo_50}}" alt="Card image cap">
+                    <span class="title">{{first_name}} {{last_name}}</span>
+                    <span class="add-favorite-pic"></span>
+                </div>
+            </li>
+            {{/each}}
+    </script>
+
+<script src="task1.js"></script>
+
+</body>
+</html>

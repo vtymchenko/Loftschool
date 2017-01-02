@@ -59,8 +59,22 @@
         float: left;
         border:none;
         outline: none;
-        padding-left: 15px;
+        padding-left: 30px;
         color: #c8c8c8;
+    }
+
+    .wrapper1 .lupa {
+        position: absolute;
+        content: url("lupa.png");
+        left: 23px;
+        top: 14px;
+    }
+
+    .wrapper2 .lupa {
+        position: absolute;
+        content: url("lupa.png");
+        left: 343px;
+        top: 14px;
     }
 
     .filteredSearch{
@@ -75,31 +89,26 @@
         border-radius: 15px;
         border:none;
         outline: none;
-        padding-left: 15px;
+        padding-left: 30px;
         color: #c8c8c8;
     }
+
 
     .all-friends-paragraph{
         color: #4e4f4f;
         height: 30px;
         width: 310px;
-        margin: 0;
-        padding: 0;
-        display: block;
         position: relative;
         padding-left:15px;
         padding-top: 10px;
         font-weight: bold;
+        display:  inline-block;
     }
 
     .filter-friends-paragraph{
         color: #4e4f4f;
         height: 30px;
-        width: 310px;
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-        float:right;
+        display:  inline-block;
         position: relative;
         padding-right:15px;
         padding-top: 10px;
@@ -112,10 +121,10 @@
         height: 322px;
         float: left;
         position: relative;
-        display: inline-block;
-        overflow: auto;
+        display:  inline-block;
         font-weight: bold;
         font-size: 12px;
+        overflow: auto;
     }
 
     #filteredFriendsContainer{
@@ -141,7 +150,7 @@
         border-top: none;
     }
 
-    #allFriendsContainer .add-favorite-pic::after {
+     .add-favorite-pic::after {
         display: inline-block;
         content: url("add_sign.png");
         float:right;
@@ -160,7 +169,6 @@
 
     }
 
-
     #filteredFriendsContainer .add-favorite-pic::after{
         display: inline-block;
         content: url("remove_sign.png");
@@ -170,10 +178,6 @@
         line-height:50px;
         padding-right: 10px;
     }
-
-
-
-
 
     .footer{
         height: 48px;
